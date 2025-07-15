@@ -1,4 +1,4 @@
-# ASCII Discord Bot
+# ASCII Discord Bot [![Run ASCII Discord Bot](https://github.com/SlawSimulation/Discord-ACAII-Bot/actions/workflows/run-bot.yml/badge.svg)](https://github.com/SlawSimulation/Discord-ACAII-Bot/actions/workflows/run-bot.yml)
 
 Plays animated ASCII art in a Discord channel by editing a single message.
 
