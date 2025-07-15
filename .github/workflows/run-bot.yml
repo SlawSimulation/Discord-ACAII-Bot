@@ -1,0 +1,28 @@
+name: Run ASCII Discord Bot
+
+on:
+  workflow_dispatch:        # manual launch from GitHub UI
+  push:                      # or whenever you push to main
+    branches: [ main ]
+
+jobs:
+  ascii-bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4320    # 3 days; Actions cap is 6 h per job on Free, raise if runner allows
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Start bot
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+          CHANNEL_ID:    ${{ secrets.CHANNEL_ID }}
+          # Optional: FRAME_DELAY: ${{ secrets.FRAME_DELAY }}
+        run: python bot.py
